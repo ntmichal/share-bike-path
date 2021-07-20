@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// import 'leaflet';
-// import 'leaflet-routing-machine';
-// import 'leaflet-routing-machine/src/OpenRouteService';
-// declare let L;
-
-// import { Layer, Icon, icon, Marker } from 'leaflet';
 import { control, Map, latLng, tileLayer } from 'leaflet';
 
 @Component({

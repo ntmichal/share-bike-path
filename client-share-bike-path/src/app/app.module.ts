@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { PointsListComponent } from './points-list/points-list.component';
 import { MapComponent } from './map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MainAppComponent } from './main-app/main-app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    MainAppComponent,
+    PointsListComponent
   ],
   imports: [
     BrowserModule,
