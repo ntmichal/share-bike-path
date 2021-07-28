@@ -1,20 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+  
+  eventIdForm = new FormGroup({
+    eventId : new FormControl('')
+  })
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private formBuilder: FormBuilder) {
+
+    }
 
   ngOnInit(): void {
   }
 
   joinEvent(){
-    this.navigateToUrlWithParam('mainapp',99);
+    var eventId = this.eventIdForm.get("eventId")?.value;
+    this.navigateToUrlWithParam('mainapp',eventId);
   }
 
   createEvent(){

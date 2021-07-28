@@ -9,7 +9,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MainAppComponent } from './main-app/main-app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LeafletModule
+    LeafletModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
