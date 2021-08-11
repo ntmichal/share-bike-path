@@ -42,10 +42,10 @@ export class MapComponent implements OnInit {
 
     map.on('click',  (e) => {
       var coords = e as LeafletMouseEvent;
-      console.log(coords.latlng);
+      var latLng = coords.latlng;
 
-      //addMarker
-      this.addMarker(map,coords);
+
+      this.addMarker(map,latLng);
 
     });
   }
