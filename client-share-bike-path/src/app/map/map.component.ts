@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import 'leaflet';
 import {LatLng, LeafletMouseEvent, Map} from "leaflet";
-// declare  let L;
-declare let L: { tileLayer: (arg0: string, arg1: { maxZoom: number; attribution: string; }) => any; latLng: (arg0: number[]) => any; marker: (arg0: LatLng) => { (): any; new(): any; addTo: { (arg0: Map): void; new(): any; }; }; };
+declare  let L: { tileLayer: (arg0: string, arg1: { maxZoom: number; attribution: string; }) => any; latLng: (arg0: number[]) => any; marker: (arg0: any, arg1: { draggable: boolean; }) => { (): any; new(): any; addTo: { (arg0: Map): void; new(): any; }; }; };
 
 import { Layer, Icon, icon, Marker } from 'leaflet';
 
@@ -44,7 +43,7 @@ export class MapComponent implements OnInit {
       var coords = e as LeafletMouseEvent;
       var latLng = coords.latlng;
 
-
+       
       this.addMarker(map,latLng);
 
     });
@@ -52,6 +51,7 @@ export class MapComponent implements OnInit {
 
 
   addMarker(map: L.Map, coords: any){
-    L.marker(coords).addTo(map);
+    L.marker(coords, {draggable: true}).addTo(map);
+ 
   }
 }
