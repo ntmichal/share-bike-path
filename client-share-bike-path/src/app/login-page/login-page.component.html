@@ -1,0 +1,13 @@
+<div class="login-page-container">
+    <div class="input-container">
+        <label>Join by route ID</label>
+        <form [formGroup]="eventIdForm" (ngSubmit)="joinEvent()">
+            <input id="eventId" type="text" formControlName="eventId"/>
+            <input type="submit" value="Join">
+        </form>
+
+        
+        <label>Create new route</label>
+        <button (click)="createEvent()">Create</button> 
+    </div>
+</div> 
