@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import 'leaflet';
-import {LatLng, LeafletMouseEvent, Map} from "leaflet";
-declare  let L: { tileLayer: (arg0: string, arg1: { maxZoom: number; attribution: string; }) => any; latLng: (arg0: number[]) => any; marker: (arg0: any, arg1: { draggable: boolean; }) => { (): any; new(): any; addTo: { (arg0: Map): void; new(): any; }; }; };
+import {LeafletMouseEvent, Map } from "leaflet";
 
-import { Layer, Icon, icon, Marker } from 'leaflet';
+import * as L from 'leaflet';
+import 'leaflet-routing-machine';
+import 'leaflet-routing-machine/src/OpenRouteServiceV2';
 
-
+import { OpenRouteService } from '../open-route-service';
 @Component({
+
+
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
@@ -19,22 +21,27 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  control:any;
   centerCoordinates = [52.237049,21.017532];
+
 
   mapLayer = L.tileLayer('https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=ZkrAk8j36aDQiWLldyPt', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="#">Map Tiler</a> | <a href="#">Open Route Service</a> '
   });
 
+
   options = {
     layers:[ this.mapLayer],
-    zoom: 11,
+    zoom: 10,
     center: L.latLng([52.237049,21.017532]),
     zoomControl: false
   };
 
+
+
   onMapReady(map: L.Map) {
-    // map.addControl(control.zoom({ position: 'bottomright' }));
 
     map.on('click',  (e) => {
       var coords = e as LeafletMouseEvent;
@@ -42,13 +49,28 @@ export class MapComponent implements OnInit {
 
 
       this.addMarker(map,latLng);
+    
+    
 
     });
+
+    this.control = L.Routing.control({
+      router: new OpenRouteService(),
+      waypoints:
+      [
+        L.latLng(52.242642,20.993828),
+        L.latLng(52.225038,20.988635)
+      ]
+    }).addTo(map);
+
+
   }
 
 
   addMarker(map: L.Map, coords: any){
     L.marker(coords, {draggable: true}).addTo(map);
-
+    
   }
+
+
 }
