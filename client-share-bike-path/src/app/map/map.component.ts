@@ -4,7 +4,6 @@ import {LeafletMouseEvent, Map } from "leaflet";
 
 import * as L from 'leaflet';
 import 'leaflet-routing-machine';
-import 'leaflet-routing-machine/src/OpenRouteServiceV2';
 
 import { OpenRouteService } from '../open-route-service';
 @Component({
