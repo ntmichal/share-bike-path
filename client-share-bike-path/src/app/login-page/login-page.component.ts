@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -11,12 +11,12 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
   
-  eventIdForm = new FormGroup({
-    eventId : new FormControl('')
+  eventIdForm = new UntypedFormGroup({
+    eventId : new UntypedFormControl('')
   })
 
   constructor(private router: Router,
-    private formBuilder: FormBuilder) {
+    private formBuilder: UntypedFormBuilder) {
 
     }
 
