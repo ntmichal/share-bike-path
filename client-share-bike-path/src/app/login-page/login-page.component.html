@@ -1,13 +1,29 @@
 <div class="login-page-container">
-    <div class="input-container">
-        <label>Join by route ID</label>
-        <form [formGroup]="eventIdForm" (ngSubmit)="joinEvent()">
-            <input id="eventId" type="text" formControlName="eventId"/>
-            <input type="submit" value="Join">
-        </form>
 
-        
-        <label>Create new route</label>
-        <button (click)="createEvent()">Create</button> 
+    <div class="container-sm login-container">
+
+            <label>
+                <p class="h3">Join by route ID</p>
+            </label>
+            <form [formGroup]="eventIdForm">
+                <!-- <input id="eventId" type="text" formControlName="eventId"/> -->
+                <input id="eventId" 
+                type="text" 
+                formControlName="eventId"  
+                class="form-control event-id-form-input-field" 
+                aria-label="Sizing example input" 
+                aria-describedby="inputGroup-sizing-default"
+                >
+                <!-- <input type="submit" value="Join"> -->
+            </form>
+            <button class="btn btn-primary" (click)="joinEvent()">Join</button>
+            
+            <label>
+                <p class="h3">Create new route</p>
+            </label>
+
+            <button class="btn btn-primary" (click)="createEvent()">Create</button> 
     </div>
-</div> 
+      
+
+</div>

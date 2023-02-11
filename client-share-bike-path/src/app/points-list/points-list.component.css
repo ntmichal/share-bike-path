@@ -9,37 +9,37 @@
 }
 
 .point-container{
-    padding: 4px 15px 4px 15px;
+    padding: 10px 15px 10px 15px;
     margin: 2px;
     font-size: 18px;
-    height: 35px;
-    line-height: 30px;
-    background-color: rgb(190, 190, 190);
+    background-color: rgb(240, 238, 238);
     color: rgb(3, 3, 3);
-
     display: flex;
     flex-direction: row;
-
+    justify-content: center;
     border-radius: 10px;
 }
 
-.point-name{
-    width: 80%;
-}
-.point-name .marker-point{
+
+.marker{
     display: block;
-    width: 55px;
+    cursor: pointer;
     height: 35px;
     line-height: 35px;
+    text-align: center;
+
+}
+.point-name .marker-point{
+
     background-color: green;
     border-radius: 5px;
-    text-align: center;
     color: rgb(255, 255, 255);
-    cursor: pointer;
+    width: 100%;
+}
+.point-name{
+    width: 70%;
+
 }
 .delete-point{
-    width: 20%;
-}
-.delete-point .marker-delete{
-    cursor: pointer;
+    width: 30%
 }

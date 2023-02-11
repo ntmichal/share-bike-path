@@ -4,7 +4,7 @@ import 'leaflet-routing-machine';
 
 export class OpenRouteService implements L.Routing.IRouter{
     
-    private apiUrl = 'http://localhost:8080/meeting/route';
+    private apiUrl = 'http://localhost:8080/api/meeting/route';
     private wayPoints: L.Routing.Waypoint[] = [];
     private options?:any;
 

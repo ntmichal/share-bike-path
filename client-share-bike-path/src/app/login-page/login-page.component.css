@@ -6,8 +6,27 @@
     align-items: center;
     justify-content: center;
 } 
+.login-container{
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    font-size: 1.50rem;
+    background-color: rgb(240, 238, 238);
+    padding: 35px;
+    border-radius: 25px;
+}
 
-.input-container{
+.login-container button{
+    font-size: 1.5rem;
+}
+
+.event-id-form-input-field{
+    height: 45px;
+    font-size: 1.5rem;
+}
+/* .input-container{
     padding: 15px;
     width: 250px;
     height: 200px;
@@ -28,4 +47,4 @@
     cursor: pointer;
     height: 35px;
 
-}
+} */
