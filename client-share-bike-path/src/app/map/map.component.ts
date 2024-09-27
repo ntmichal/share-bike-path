@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-// import 'leaflet';
-// import 'leaflet-routing-machine';
-// import 'leaflet-routing-machine/src/OpenRouteService';
-// declare let L;
+import 'leaflet';
+import {LatLng, LeafletMouseEvent, Map} from "leaflet";
+declare  let L: { tileLayer: (arg0: string, arg1: { maxZoom: number; attribution: string; }) => any; latLng: (arg0: number[]) => any; marker: (arg0: any, arg1: { draggable: boolean; }) => { (): any; new(): any; addTo: { (arg0: Map): void; new(): any; }; }; };
 
-// import { Layer, Icon, icon, Marker } from 'leaflet';
-import { control, Map, latLng, tileLayer } from 'leaflet';
+import { Layer, Icon, icon, Marker } from 'leaflet';
+
 
 @Component({
   selector: 'app-map',
@@ -20,18 +19,36 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  centerCoordinates = [52.237049,21.017532];
+
+  mapLayer = L.tileLayer('https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=ZkrAk8j36aDQiWLldyPt', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="#">Map Tiler</a> | <a href="#">Open Route Service</a> '
+  });
 
   options = {
-    layers: [
-      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
-    ],
-    zoom: 8,
-    zoomControl: false,
-    center: latLng(52.229676, 21.012229),
-
+    layers:[ this.mapLayer],
+    zoom: 11,
+    center: L.latLng([52.237049,21.017532]),
+    zoomControl: false
   };
 
-  mapReady(map: Map) {
-    map.addControl(control.zoom({ position: 'bottomright' }));
+  onMapReady(map: L.Map) {
+    // map.addControl(control.zoom({ position: 'bottomright' }));
+
+    map.on('click',  (e) => {
+      var coords = e as LeafletMouseEvent;
+      var latLng = coords.latlng;
+
+
+      this.addMarker(map,latLng);
+
+    });
+  }
+
+
+  addMarker(map: L.Map, coords: any){
+    L.marker(coords, {draggable: true}).addTo(map);
+
   }
 }
